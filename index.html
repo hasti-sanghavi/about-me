@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
+    <title>Hasti Sanghavi | Product & AI Professional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cream: #F5F1E8;
-            --charcoal: #2C2C2C;
-            --rust: #B85C38;
-            --sage: #7A9B76;
-            --slate: #4A5568;
+            --midnight: #1a1a2e;
+            --electric: #6C63FF;
+            --coral: #FF6B9D;
+            --mint: #4ECDC4;
+            --pearl: #F8F9FA;
+            --smoke: #E9ECEF;
+            --slate: #495057;
         }
         
         * {
@@ -23,46 +25,113 @@
         }
         
         body {
-            font-family: 'Karla', sans-serif;
-            background-color: var(--cream);
-            color: var(--charcoal);
-            line-height: 1.7;
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--pearl);
+            color: var(--midnight);
+            line-height: 1.6;
             overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-animation::before,
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+        }
+        
+        .bg-animation::before {
+            width: 600px;
+            height: 600px;
+            background: var(--electric);
+            top: -200px;
+            right: -100px;
+            animation: float1 25s ease-in-out infinite;
+        }
+        
+        .bg-animation::after {
+            width: 400px;
+            height: 400px;
+            background: var(--coral);
+            bottom: -100px;
+            left: -50px;
+            animation: float2 20s ease-in-out infinite;
+        }
+        
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-50px, 50px) scale(1.1); }
+        }
+        
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -30px) scale(1.15); }
         }
         
         /* Header */
         header {
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: fixed;
             width: 100%;
-            background: rgba(245, 241, 232, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(248, 249, 250, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+            border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+            transition: all 0.3s ease;
         }
         
         .logo {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            color: var(--charcoal);
-            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         nav a {
-            margin-left: 2rem;
+            margin-left: 2.5rem;
             text-decoration: none;
-            color: var(--slate);
-            font-weight: 400;
+            color: var(--midnight);
+            font-weight: 500;
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--electric);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
         }
         
         nav a:hover {
-            color: var(--rust);
+            color: var(--electric);
         }
         
         /* Hero Section */
@@ -72,38 +141,17 @@
             align-items: center;
             padding: 0 5%;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 120%;
-            background: linear-gradient(135deg, var(--sage) 0%, transparent 70%);
-            opacity: 0.1;
-            border-radius: 50%;
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg); }
         }
         
         .hero-content {
-            max-width: 800px;
-            z-index: 1;
+            max-width: 900px;
             animation: fadeInUp 1s ease-out;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -111,92 +159,202 @@
             }
         }
         
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+            color: white;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
         .hero-content h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            line-height: 1.2;
             margin-bottom: 1.5rem;
-            color: var(--charcoal);
+            color: var(--midnight);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--slate);
             margin-bottom: 2.5rem;
             font-weight: 300;
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
         
         .cta-button {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: var(--rust);
+            background: linear-gradient(135deg, var(--electric), var(--coral));
             color: white;
             text-decoration: none;
-            border-radius: 2px;
+            border-radius: 50px;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(184, 92, 56, 0.3);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.3);
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(184, 92, 56, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: var(--electric);
+            border: 2px solid var(--electric);
+            box-shadow: none;
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--electric);
+            color: white;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 5rem 5%;
+            background: white;
+            border-top: 1px solid var(--smoke);
+            border-bottom: 1px solid var(--smoke);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--slate);
+            font-size: 1rem;
+            font-weight: 500;
         }
         
         /* About Section */
         .about {
             padding: 8rem 5%;
-            background: white;
-            position: relative;
+            background: var(--pearl);
         }
         
-        .about::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--sage), var(--rust));
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            display: inline-block;
+            color: var(--electric);
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
         
         .section-title {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 3rem;
-            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            color: var(--midnight);
         }
         
-        .about-grid {
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--slate);
+            line-height: 1.8;
+        }
+        
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
-        .about-card {
-            padding: 2rem;
-            background: var(--cream);
-            border-left: 3px solid var(--sage);
-            transition: transform 0.3s ease;
+        .skill-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         
-        .about-card:hover {
-            transform: translateX(10px);
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--electric);
+            box-shadow: 0 20px 50px rgba(108, 99, 255, 0.15);
         }
         
-        .about-card h3 {
-            font-family: 'DM Serif Display', serif;
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+        }
+        
+        .skill-card h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--rust);
+            color: var(--midnight);
+        }
+        
+        .skill-card p {
+            color: var(--slate);
+            line-height: 1.7;
         }
         
         /* Projects Section */
         .projects {
             padding: 8rem 5%;
-            background: var(--cream);
+            background: white;
         }
         
         .project-grid {
@@ -207,100 +365,233 @@
         }
         
         .project-card {
-            background: white;
+            background: var(--pearl);
+            border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
         }
         
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--electric);
+            box-shadow: 0 25px 60px rgba(108, 99, 255, 0.2);
         }
         
         .project-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, var(--sage), var(--rust));
+            background: linear-gradient(135deg, var(--electric), var(--coral));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             color: white;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-30%, -30%) scale(1.1); }
         }
         
         .project-content {
-            padding: 2rem;
+            padding: 2.5rem;
         }
         
         .project-content h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
-            color: var(--charcoal);
+            color: var(--midnight);
+        }
+        
+        .project-content p {
+            color: var(--slate);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.6rem;
         }
         
         .tag {
-            padding: 0.3rem 0.8rem;
-            background: var(--cream);
+            padding: 0.4rem 1rem;
+            background: white;
+            border: 1px solid var(--smoke);
             border-radius: 20px;
             font-size: 0.85rem;
             color: var(--slate);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tag:hover {
+            background: var(--electric);
+            color: white;
+            border-color: var(--electric);
+        }
+        
+        /* Experience Section */
+        .experience {
+            padding: 8rem 5%;
+            background: var(--midnight);
+            color: white;
+        }
+        
+        .experience .section-label {
+            color: var(--mint);
+        }
+        
+        .experience .section-title {
+            color: white;
+        }
+        
+        .experience .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .timeline {
+            max-width: 900px;
+            margin: 4rem auto 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+            border-left: 2px solid rgba(108, 99, 255, 0.3);
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+            box-shadow: 0 0 0 4px var(--midnight), 0 0 0 6px rgba(108, 99, 255, 0.3);
+        }
+        
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--mint);
+        }
+        
+        .timeline-period {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .timeline-content li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+        
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
         }
         
         /* Contact Section */
         .contact {
             padding: 8rem 5%;
-            background: var(--charcoal);
-            color: var(--cream);
+            background: linear-gradient(135deg, var(--electric), var(--coral));
+            color: white;
             text-align: center;
         }
         
+        .contact .section-label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
         .contact .section-title {
-            color: var(--cream);
+            color: white;
         }
         
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .contact .section-description {
+            color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 3rem;
         }
         
-        .social-links {
+        .contact-links {
             display: flex;
             gap: 2rem;
             justify-content: center;
-            margin-top: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
         }
         
-        .social-links a {
-            color: var(--cream);
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            color: white;
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
-        .social-links a:hover {
-            color: var(--rust);
+        .contact-link:hover {
+            background: white;
+            color: var(--electric);
+            transform: translateY(-5px);
         }
         
         /* Footer */
         footer {
-            background: var(--charcoal);
-            color: var(--cream);
+            background: var(--midnight);
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid rgba(245, 241, 232, 0.1);
+            padding: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         /* Responsive */
@@ -308,6 +599,7 @@
             header {
                 flex-direction: column;
                 gap: 1rem;
+                padding: 1rem 5%;
             }
             
             nav a {
@@ -318,112 +610,292 @@
                 font-size: 2.5rem;
             }
             
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
             .project-grid,
-            .about-grid {
+            .skills-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+    
     <header>
-        <div class="logo">YourName</div>
+        <div class="logo">Hasti Sanghavi</div>
         <nav>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Building digital experiences that matter</h1>
-            <p>I'm a creative developer passionate about crafting beautiful, functional websites and applications.</p>
-            <a href="#projects" class="cta-button">VIEW MY WORK</a>
+            <span class="hero-label">PRODUCT & AI PROFESSIONAL</span>
+            <h1>Building <span class="highlight">intelligent products</span> through no-code automation & AI</h1>
+            <p>Product Manager with 4+ years driving digital transformation through cross-functional leadership, no-code automation, and AI-powered solutions.</p>
+            <div class="cta-group">
+                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="Hasti_Sanghavi_Resume.pdf" class="cta-button secondary" download>Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">4+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">250+</span>
+                <span class="stat-label">Features Delivered</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">20K+</span>
+                <span class="stat-label">Users Impacted</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">33%</span>
+                <span class="stat-label">Faster Time-to-Market</span>
+            </div>
         </div>
     </section>
 
     <section class="about" id="about">
-        <h2 class="section-title">About Me</h2>
-        <p style="max-width: 800px; font-size: 1.1rem; margin-bottom: 3rem;">
-            I'm a developer who believes in the power of good design and clean code. 
-            With a focus on user experience and attention to detail, I create digital solutions that are both beautiful and functional.
-        </p>
-        <div class="about-grid">
-            <div class="about-card">
-                <h3>Design</h3>
-                <p>Creating intuitive interfaces with a strong focus on typography, color, and layout that enhance user experience.</p>
+        <div class="section-header">
+            <span class="section-label">What I Do</span>
+            <h2 class="section-title">Product Management Meets No-Code Innovation</h2>
+            <p class="section-description">
+                I bridge the gap between business needs and technical execution, leveraging no-code tools and AI to build scalable solutions. 
+                My approach combines strategic product thinking with hands-on automation to deliver measurable impact.
+            </p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🚀</div>
+                <h3>Product Leadership</h3>
+                <p>End-to-end product lifecycle management from ideation to launch, driving 250+ feature releases and reducing launch cycles by 33% through structured governance.</p>
             </div>
-            <div class="about-card">
-                <h3>Development</h3>
-                <p>Writing clean, maintainable code using modern technologies and best practices to bring designs to life.</p>
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <h3>No-Code Automation</h3>
+                <p>Expert in n8n, Retool, and API integrations. Built AI-powered bots, automated workflows, and internal tools that save teams 45+ minutes weekly per program.</p>
             </div>
-            <div class="about-card">
-                <h3>Innovation</h3>
-                <p>Always exploring new tools and techniques to push the boundaries of what's possible on the web.</p>
+            <div class="skill-card">
+                <div class="skill-icon">🧠</div>
+                <h3>AI & GenAI</h3>
+                <p>Currently pursuing Applied Generative AI certification. Built DocGuard (OCR + fraud detection) and implemented AI-Ask bot for automated learner support.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Data-Driven Decisions</h3>
+                <p>Advanced Excel, Google Sheets, and dashboard creation. Reduced support tickets by 60-70% through QA governance and data-backed process improvements.</p>
             </div>
         </div>
     </section>
 
     <section class="projects" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-header">
+            <span class="section-label">Featured Work</span>
+            <h2 class="section-title">Projects & Solutions</h2>
+            <p class="section-description">
+                A selection of products, automations, and tools I've built to solve real business problems.
+            </p>
+        </div>
+        
         <div class="project-grid">
             <div class="project-card">
-                <div class="project-image">Project 1</div>
+                <div class="project-image">🛡️</div>
                 <div class="project-content">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A full-featured online store with cart management, payment integration, and admin dashboard.</p>
+                    <h3>DocGuard</h3>
+                    <p>AI-powered document processing platform with OCR, intelligent classification, and fraud detection capabilities. Built to streamline document verification workflows.</p>
                     <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">MongoDB</span>
+                        <span class="tag">OCR</span>
+                        <span class="tag">AI Classification</span>
+                        <span class="tag">Fraud Detection</span>
+                        <span class="tag">Automation</span>
                     </div>
                 </div>
             </div>
+            
             <div class="project-card">
-                <div class="project-image">Project 2</div>
+                <div class="project-image">🔖</div>
                 <div class="project-content">
-                    <h3>Weather App</h3>
-                    <p>Real-time weather tracking application with beautiful UI and accurate forecasting.</p>
+                    <h3>Bookmark Manager</h3>
+                    <p>Smart bookmark management application to organize, categorize, and retrieve saved links efficiently. Built with modern web technologies.</p>
                     <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">API</span>
-                        <span class="tag">CSS3</span>
+                        <span class="tag">Web App</span>
+                        <span class="tag">Organization</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Productivity</span>
                     </div>
                 </div>
             </div>
+            
             <div class="project-card">
-                <div class="project-image">Project 3</div>
+                <div class="project-image">⚡</div>
                 <div class="project-content">
-                    <h3>Portfolio Website</h3>
-                    <p>A modern, responsive portfolio showcasing creative work with smooth animations.</p>
+                    <h3>n8n Workflow Automations</h3>
+                    <p>Suite of intelligent workflow automations including cohort cloning, reporting pipelines, and cross-platform integrations that save hours of manual work.</p>
                     <div class="project-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">Animation</span>
+                        <span class="tag">n8n</span>
+                        <span class="tag">APIs</span>
+                        <span class="tag">Webhooks</span>
+                        <span class="tag">Integration</span>
                     </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <h3>AI-Ask Bot</h3>
+                    <p>Intelligent chatbot for automated learner support, reducing query resolution time and cutting SME costs while maintaining high satisfaction rates.</p>
+                    <div class="project-tags">
+                        <span class="tag">GenAI</span>
+                        <span class="tag">Chatbot</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Support Automation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <h3>Platform Feature Rollouts</h3>
+                    <p>Led end-to-end delivery of 250+ platform features impacting 20,000+ learners. Achieved 95% SLA adherence with zero post-launch downtime.</p>
+                    <div class="project-tags">
+                        <span class="tag">Product Management</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">Agile</span>
+                        <span class="tag">Stakeholder Management</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🎓</div>
+                <div class="project-content">
+                    <h3>University Reporting Digitization</h3>
+                    <p>Transformed manual university reporting process, cutting turnaround from 2+ months to 30-40 days through automation and structured data pipelines.</p>
+                    <div class="project-tags">
+                        <span class="tag">Process Optimization</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Data Management</span>
+                        <span class="tag">Retool</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="section-header">
+            <span class="section-label">Career Journey</span>
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-description">
+                4+ years of driving product excellence at upGrad, India's leading EdTech platform.
+            </p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Assistant Manager – Product & MIS</h3>
+                    <p class="timeline-period">upGrad Education Pvt. Ltd. | April 2024 – Present</p>
+                    <ul>
+                        <li>Owned rollout of 250+ platform features (20 releases/month) impacting 20,000+ learners</li>
+                        <li>Reduced feature launch TAT from 45 to 30 days (33% improvement)</li>
+                        <li>Achieved 95% SLA adherence with 100% platform uptime and zero post-launch downtime</li>
+                        <li>Led automation initiatives including AI-Ask bot and cohort cloning, saving 45 min/week per program</li>
+                        <li>Cut post-launch support tickets by 60-70% through QA governance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Senior Associate – Programs</h3>
+                    <p class="timeline-period">upGrad Education Pvt. Ltd. | April 2023 – March 2024</p>
+                    <ul>
+                        <li>Led end-to-end launch of 5+ programs, coordinating 20+ external stakeholders</li>
+                        <li>Maintained 95% SLA compliance through structured planning and release coordination</li>
+                        <li>Drove 20% quarterly reduction in stakeholder queries via process standardization</li>
+                        <li>Digitized university reporting, cutting turnaround from 2+ months to 30-40 days</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Associate – Programs</h3>
+                    <p class="timeline-period">upGrad Education Pvt. Ltd. | October 2021 – March 2023</p>
+                    <ul>
+                        <li>Coordinated milestones and deliverables with 100% schedule adherence</li>
+                        <li>Strengthened governance with lifecycle trackers for better stakeholder alignment</li>
+                        <li>Managed cross-functional teams across multiple parallel program releases</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
-        <h2 class="section-title">Let's Work Together</h2>
-        <p>Have a project in mind? I'd love to hear about it. Let's create something amazing together.</p>
-        <a href="mailto:your.email@example.com" class="cta-button">GET IN TOUCH</a>
-        <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
+        <div class="section-header">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">Let's Build Something Together</h2>
+            <p class="section-description">
+                Open to product management roles, no-code automation projects, and AI collaboration opportunities. 
+                Let's connect and create impact!
+            </p>
+        </div>
+        
+        <div class="contact-links">
+            <a href="mailto:hastisanghavi008@gmail.com" class="contact-link">
+                <span>📧</span>
+                <span>Email Me</span>
+            </a>
+            <a href="https://linkedin.com/in/hasti-sanghavi" target="_blank" class="contact-link">
+                <span>💼</span>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/hastisanghavi" target="_blank" class="contact-link">
+                <span>💻</span>
+                <span>GitHub</span>
+            </a>
+            <a href="tel:+918286617872" class="contact-link">
+                <span>📱</span>
+                <span>+91 82866 17872</span>
+            </a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 Hasti Sanghavi. Built with passion for product excellence and no-code innovation.</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -437,14 +909,37 @@
             });
         });
 
-        // Add scroll-based header styling
+        // Header shadow on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
             } else {
                 header.style.boxShadow = 'none';
             }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.skill-card, .project-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
         });
     </script>
 </body>
